@@ -28,8 +28,7 @@ class HelloWorld extends Component {
                     <Text style={styles.welcome }>
                         this is god
                     </Text>
-                    <Image source={require('./img/ic_launcher.png') }>
-                    </Image>
+                    <Image source={require('./img/ic_launcher.png') }/>
                     <TouchableOpacity
                         onPress={() => _navigator.push({ title: 'Http', id: 'http' }) }
                         style={ styles.button}>
