@@ -7,12 +7,26 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.helloworld.Main2Activity">
+    tools:context=".HelloActivity">
 
 
     <Button
         android:id="@+id/btn_RN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="toRN" />
+
+    <Button
+        android:id="@+id/btn_RN_inter_act"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_RN"
+        android:text="btn_RN_inter_act" />
+
+    <com.helloworld.inter.JsCallJavaView
+        android:text="this is test view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_RN_inter_act" />
 </RelativeLayout>

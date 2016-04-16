@@ -4,6 +4,7 @@
  */
 
 import React, {
+    NativeModules,
     Image,
     AppRegistry,
     Component,
@@ -13,8 +14,12 @@ import React, {
     TouchableOpacity,
     Navigator
 } from 'react-native';
-var HttpView = require('./http')
-// var Button = require('react-native-button');
+
+var HttpView = require('./http');
+var Button = require('react-native-button');
+
+
+
 
 class HelloWorld extends Component {
     configureScenceAndroid() {
@@ -25,15 +30,14 @@ class HelloWorld extends Component {
         if (route.id === 'main') {
             return (
                 <View>
-                    <Text style={styles.welcome }>
-                        this is god
-                    </Text>
-                    <Image source={require('./img/ic_launcher.png') }/>
+                    <Button style={styles.container} onPress={this.handlePress}>
+                        callJavaMethod!
+                    </Button >
                     <TouchableOpacity
                         onPress={() => _navigator.push({ title: 'Http', id: 'http' }) }
                         style={ styles.button}>
                         <Text  style={styles.welcome}>
-                            Press Me!</Text>
+                            push</Text>
                     </TouchableOpacity>
                 </View>
             );
@@ -45,28 +49,27 @@ class HelloWorld extends Component {
         }
     }
 
-    handlePress() {
-        console.log('what the hell')
-    }
     render() {
         var configureScence = this.configureScenceAndroid;
         var renderScene = this.renderSceneAndroid;
         return (
-            <Navigator
-                debugOverlay={false}
-                initialRoute={{ title: 'Main', id: 'main' }}
-                renderScene={renderScene}
-                />
+            <View>
+                <Button style={styles.container} onPress={this.handlePress}>
+                    callJavaMethod!
+                </Button >
+            </View>
         );
     }
     handlePress() {
         console.log('god,you');
     }
+
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        margin: 30,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#F5FCFF',

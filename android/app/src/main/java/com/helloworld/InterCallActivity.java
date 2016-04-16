@@ -9,10 +9,12 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+import com.helloworld.inter.JsCallJavaPackage;
 
-public class Main2Activity extends AppCompatActivity implements DefaultHardwareBackBtnHandler {
-
-
+/**
+ * 与js相互调用的Activity
+ */
+public class InterCallActivity extends AppCompatActivity implements DefaultHardwareBackBtnHandler {
     private ReactRootView reactRootView;
     private ReactInstanceManager reactInstanceManager;
 
@@ -22,14 +24,15 @@ public class Main2Activity extends AppCompatActivity implements DefaultHardwareB
         reactRootView = new ReactRootView(this);
         reactInstanceManager = ReactInstanceManager.builder()
                 .setApplication(getApplication())
-                .setBundleAssetName("index.android.bundle")
-                .setJSMainModuleName("index.android")
+                .setBundleAssetName("inter.call.bundle")
+                .setJSMainModuleName("inter.call")
                 .addPackage(new MainReactPackage())
+                .addPackage(new JsCallJavaPackage())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
 
-        reactRootView.startReactApplication(reactInstanceManager, "HelloWorld", null);
+        reactRootView.startReactApplication(reactInstanceManager, "InterCall", null);
         setContentView(reactRootView);
     }
 

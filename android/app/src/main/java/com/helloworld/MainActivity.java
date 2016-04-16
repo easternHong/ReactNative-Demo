@@ -13,7 +13,13 @@ public class MainActivity extends Activity {
         findViewById(R.id.btn_RN).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Main2Activity.class));
+                startActivity(new Intent(MainActivity.this, HelloActivity.class));
+            }
+        });
+        findViewById(R.id.btn_RN_inter_act).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, InterCallActivity.class));
             }
         });
     }
