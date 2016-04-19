@@ -3,6 +3,8 @@
     package="com.helloworld">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -25,7 +27,8 @@
         <activity
             android:name=".CameraViewActivity"
             android:label="@string/title_activity_camera_view"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".CameraTest"></activity>
     </application>
 
 </manifest>

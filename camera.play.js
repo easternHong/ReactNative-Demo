@@ -9,6 +9,7 @@ import React, {
     AppRegistry,
     Component,
     View,
+    PropTypes,
     Text,
     StyleSheet,
     requireNativeComponent,
@@ -16,40 +17,66 @@ import React, {
     NativeModules
 }from 'react-native';
 var Button = require('react-native-button');
-var CameraSurfaceView = requireNativeComponent('./NativeCameraView');
-
 /////////////////////////////////////////////////////////////
-//NativeModules.NativeCameraModule，表示React引擎会加载对应的NativeCameraModule.java的字节码。
-//获得java module 对象实例
+//获取java的module
 var nativeCameraModule = NativeModules.NativeCameraModule;
-
-function CameraModule() {
-    nativeCameraModule.init();
-    ToastAndroid.show('JsToast', ToastAndroid.SHORT);
+function initCamera() {
+    nativeCameraModule.initCamera();
+};
+function startPreview() {
+    nativeCameraModule.startPreview();
+};
+function stopPreview() {
+    nativeCameraModule.stopPreview();
 }
 /////////////////////////////////////////////////////////////
+//获取js导出的module
+var CameraViewProps = React.createClass({
+    propTypes: {
+        preview: PropTypes.bool,
+    ...View.propTypes,
+  },
+
+render: function() {
+    return;
+}
+})
+var CameraSurfaceView = requireNativeComponent('NativeCameraView', CameraViewProps);
+function VoxImplantPreview(props) {
+    var { style, ...otherProps} = props;
+    return (
+        <View style={style}>
+            <CameraSurfaceView
+                style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}
+                preview={true}
+                />
+        </View>
+    );
+}
+/////////////////////////////////////////////////////////////
+
 
 class Living extends Component {
 
     render() {
-        var cameraPreview = CameraSurfaceView;
         return (
             <View>
                 <Text style={styles.cameraViewHolderStyle}>
                     what the hell!!!
                 </Text>
-                <CameraSurfaceView style={styles.cameraSurfaceStyle}>
-                </CameraSurfaceView>
                 <Button onPress={this.press2Init}>
                     Init!
                 </Button>
+                <VoxImplantPreview style={styles.cameraSurfaceStyle}
+                    preview={true}>
+                </VoxImplantPreview>
             </View>
         );
     }
 
     press2Init() {
         ToastAndroid.show('Init', ToastAndroid.SHORT);
-        CameraModule();
+        initCamera();
     }
 }
 const styles = StyleSheet.create({
@@ -63,7 +90,6 @@ const styles = StyleSheet.create({
         width: 300,
         height: 200,
         justifyContent: 'center'
-
     }
 });
 

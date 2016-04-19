@@ -31,4 +31,11 @@
         android:layout_below="@+id/btn_RN_inter_act"
         android:text="btn_camera" />
 
+    <Button
+        android:id="@+id/camera_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_camera"
+        android:text="camera_test" />
+
 </RelativeLayout>

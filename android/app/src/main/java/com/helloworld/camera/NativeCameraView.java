@@ -2,12 +2,12 @@ package com.helloworld.camera;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.TextureView;
+import android.view.SurfaceView;
 
 /**
  * Created by hunt on 16-4-15.
  */
-public class NativeCameraView extends TextureView {
+public class NativeCameraView extends SurfaceView {
 
     private int mRatioWidth = 0;
     private int mRatioHeight = 0;
@@ -22,7 +22,6 @@ public class NativeCameraView extends TextureView {
 
     public NativeCameraView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        setContentDescription("what the hellddafa");
     }
 
     /**

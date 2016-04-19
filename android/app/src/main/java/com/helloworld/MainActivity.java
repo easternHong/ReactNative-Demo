@@ -28,5 +28,11 @@ public class MainActivity extends Activity {
                 startActivity(new Intent(MainActivity.this, CameraViewActivity.class));
             }
         });
+        findViewById(R.id.camera_test).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CameraTest.class));
+            }
+        });
     }
 }
